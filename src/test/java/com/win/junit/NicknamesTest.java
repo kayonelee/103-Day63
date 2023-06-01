@@ -14,21 +14,18 @@ class NicknamesTest {
     @DisplayName("Test main() method output")
     @Test
     void testMainOutput() {
-        // Redirect System.out to a ByteArrayOutputStream
+
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        // Call the main() method
         Nicknames.main(new String[0]);
 
-        // Get the output from System.out
-        String output = outputStream.toString().trim(); // Trim any leading/trailing whitespace
+        String output = outputStream.toString().trim();
 
-        // Split the output into an array of lines
-        String[] actualLines = output.split(System.lineSeparator());
+        String[] actualLines = output.split(System.lineSeparator()); // SPLIT OUTPUT INTO ARRAY LINES (FAILED WITHOUT)
 
-        // Verify the expected output lines
-        String[] expectedLines = {
+
+        String[] expectedLines = { // VERIFY LINES FOR OUTPUT
                 "matt"
         };
         assertEquals(expectedLines.length, actualLines.length);
